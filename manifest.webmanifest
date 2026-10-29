@@ -1,0 +1,10 @@
+{
+  "name": "AI LEGENDS",
+  "short_name": "AI LEGENDS",
+  "description": "Plateforme d'agents IA spécialisés",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0d1c",
+  "theme_color": "#101126",
+  "icons": []
+}

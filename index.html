@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101126">
+  <meta name="description" content="AI LEGENDS — une plateforme d'agents IA spécialisés.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+  <title>AI LEGENDS</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="AI LEGENDS accueil"><span class="brand-mark">✦</span><span>AI <b>LEGENDS</b></span></a>
+      <button id="menu-toggle" class="icon-button" aria-label="Ouvrir le menu">☰</button>
+      <nav id="nav">
+        <a href="#agents">Agents</a><a href="#plans">Abonnements</a><button id="account-button" class="button button-small">Mon compte</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span class="pulse"></span> TON ESPACE D'INTELLIGENCE ARTIFICIELLE</div>
+        <h1>Une idée.<br><span class="gradient-text">Des agents pour la réaliser.</span></h1>
+        <p class="hero-copy">Business, études, création, programmation et productivité : choisis un agent spécialisé et avance plus vite.</p>
+        <div class="hero-actions"><a class="button" href="#agents">Explorer les agents <span>↗</span></a><a class="text-link" href="#plans">Voir les abonnements</a></div>
+        <div class="hero-stats"><div><b>10</b><span>spécialités prévues</span></div><div><b>5</b><span>formules</span></div><div><b>1</b><span>espace personnel</span></div></div>
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+      </section>
+
+      <section class="section" id="agents">
+        <div class="section-heading"><div><div class="eyebrow">LA GALERIE</div><h2>Quel est ton prochain défi ?</h2></div><p>Choisis un spécialiste pour commencer.</p></div>
+        <div class="filters" id="filters"><button class="filter active" data-filter="Tous">Tous</button><button class="filter" data-filter="Business">Business</button><button class="filter" data-filter="Création">Création</button><button class="filter" data-filter="Études">Études</button><button class="filter" data-filter="Technique">Technique</button></div>
+        <div id="agent-grid" class="agent-grid"></div>
+      </section>
+
+      <section class="chat-panel" id="chat-panel" hidden>
+        <div class="chat-heading"><div><div class="eyebrow">TON AGENT</div><h2 id="chat-title">Assistant polyvalent</h2></div><button id="close-chat" class="icon-button" aria-label="Fermer">✕</button></div>
+        <div id="chat-log" class="chat-log"><div class="message assistant">Bonjour ! Choisis une mission et je t'aiderai à avancer. Pour le moment, configure une clé API côté serveur pour activer les réponses réelles.</div></div>
+        <form id="chat-form" class="chat-form"><textarea id="chat-input" rows="2" maxlength="6000" placeholder="Décris ce que tu veux accomplir…" required></textarea><button class="button" type="submit">Envoyer ↗</button></form>
+        <p class="small-note">Ne saisis pas de données sensibles. Les réponses IA nécessitent la configuration d'un fournisseur dans le serveur.</p>
+      </section>
+
+      <section class="section plans-section" id="plans">
+        <div class="section-heading"><div><div class="eyebrow">ACCÈS MEMBRE</div><h2>Choisis ton niveau</h2></div><p>Prix indicatifs à valider avant commercialisation.</p></div>
+        <div class="plan-grid" id="plan-grid"></div>
+        <p class="legal-note">Les paiements ne sont pas activés dans cette première version. Aucun abonnement n'est vendu depuis cette démo.</p>
+      </section>
+
+      <section class="cta">
+        <div><div class="eyebrow">AI LEGENDS</div><h2>Le prochain niveau commence ici.</h2><p>Une interface pensée pour réunir tes outils IA au même endroit.</p></div>
+        <button class="button" id="cta-account">Créer mon espace ↗</button>
+      </section>
+    </main>
+    <footer><a class="brand" href="#"><span class="brand-mark">✦</span><span>AI <b>LEGENDS</b></span></a><span>Prototype initial • © <span id="year"></span> AI LEGENDS</span><a href="#plans">Les formules</a></footer>
+  </div>
+
+  <dialog id="account-dialog" class="modal">
+    <form method="dialog"><button class="icon-button modal-close" aria-label="Fermer">✕</button></form>
+    <div class="eyebrow">ESPACE PERSONNEL</div><h2 id="account-title">Créer ton compte</h2>
+    <p class="muted">La connexion réelle sera activée avec le serveur sécurisé. Cette maquette ne crée pas encore de compte.</p>
+    <form id="account-form" class="account-form">
+      <label>Adresse e-mail<input id="email" type="email" autocomplete="email" placeholder="toi@exemple.fr" required></label>
+      <label>Mot de passe<input id="password" type="password" autocomplete="new-password" minlength="10" placeholder="10 caractères minimum" required></label>
+      <button class="button" type="submit">Continuer</button>
+    </form>
+    <p id="account-feedback" class="small-note"></p>
+  </dialog>
+  <script src="/app.js"></script>
+</body>
+</html>

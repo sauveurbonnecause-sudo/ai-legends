@@ -1,0 +1,8 @@
+{
+  "appId": "com.ailegends.app",
+  "appName": "AI LEGENDS",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  }
+}
