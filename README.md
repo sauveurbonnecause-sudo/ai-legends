@@ -1,55 +1,23 @@
-# AI LEGENDS — prototype initial
+# AI LEGENDS — mise en ligne (tablette Android, 0 €)
 
-Cette archive contient une première version visuelle et interactive de l'application web AI LEGENDS, préparée pour évoluer en PWA et en application Android via Capacitor.
+## 1. GitHub
+1. Compte gratuit sur github.com, puis « New repository » (nom : ai-legends).
+2. « Add file > Create new file » : tapez le chemin complet comme nom (ex. `api/auth.js`, les « / » créent les dossiers), collez le contenu, « Commit ». Répétez pour chaque fichier du ZIP : package.json, vercel.json, public/index.html, api/_lib.js, auth.js, chat.js, pay.js, admin.js.
+   (Si votre navigateur accepte l'envoi de dossiers : « Add file > Upload files » après avoir extrait le ZIP avec l'appli Fichiers.)
 
-## Déjà présent
-- Page d'accueil responsive avec identité visuelle sombre/violet/or.
-- Catalogue de 10 agents spécialisés et filtres.
-- Fenêtre de conversation et navigation fonctionnelles côté interface.
-- Présentation des cinq formules Basic, Premium, Gold, Diamond et Légende.
-- Manifest PWA et service worker de cache.
-- Serveur local minimal et endpoint `/health`.
-- Configuration de départ pour Capacitor.
+## 2. Vercel
+1. vercel.com > « Continue with GitHub » > « Add New… > Project » > importez ai-legends.
+2. Framework Preset : **Other**. Ne changez rien d'autre > Deploy.
+3. Onglet **Storage** du projet > Marketplace > **Upstash Redis** (offre gratuite) > connectez-le au projet (les variables KV_REST_API_URL / KV_REST_API_TOKEN sont ajoutées automatiquement).
+4. Settings > Environment Variables :
+   - `ADMIN_EMAIL` : votre email. Le compte créé avec cet email devient administrateur.
+   - `PAYPAL_ME` : https://paypal.me/Myo969 (optionnel, c'est la valeur par défaut)
+   - IA (optionnel, sinon le chat affiche « aucun modèle connecté ») : `AI_BASE_URL` (API compatible OpenAI, ex. https://api.groq.com/openai/v1), `AI_API_KEY`, `AI_MODEL`. Vérifiez les quotas gratuits du fournisseur avant d'activer.
+5. Deployments > Redeploy. Créez votre compte avec ADMIN_EMAIL, puis ouvrez Compte > Administration.
 
-## Limites importantes
-Cette version est un **prototype**, pas encore une plateforme commerciale :
-- Aucun compte n'est réellement créé.
-- Les conversations ne sont pas envoyées à un modèle IA.
-- Aucun paiement n'est activé ou prélevé.
-- Les tarifs sont des exemples à valider.
-- Il n'y a pas encore de base de données ni de gestion sécurisée des abonnements.
-Ne demande pas aux utilisateurs d'y saisir de vrais mots de passe avant l'ajout d'une authentification serveur sécurisée.
+## Paiements (manuel)
+L'utilisateur reçoit une référence AL-XXXX et le lien PayPal.Me au bon montant. Vous vérifiez la réception dans PayPal, puis cliquez « Confirmer » : la formule est activée 30 jours. Aucune activation automatique.
 
-## Lancer sur ordinateur
-1. Installer Node.js LTS depuis https://nodejs.org/
-2. Extraire l'archive.
-3. Ouvrir un terminal dans le dossier `ai-legends`.
-4. Exécuter `npm install`
-5. Exécuter `npm start`
-6. Ouvrir `http://localhost:3000`
-
-## Utiliser depuis une tablette Android
-Pour le moment, le plus simple est de publier le site sur un hébergement web qui sert les fichiers statiques, puis de l'ouvrir dans Chrome. Pour installer la PWA, l'hébergement doit être en HTTPS et le navigateur doit proposer « Installer l'application » ou « Ajouter à l'écran d'accueil ».
-
-## Construire une application Android native (étape ultérieure)
-Capacitor nécessite Node.js et Android Studio pour générer et compiler l'APK. Ce projet contient une configuration de départ, mais l'APK n'a pas encore été construit ni testé.
-
-Quand tu seras sur un ordinateur avec Node.js et Android Studio :
-1. `npm install @capacitor/core @capacitor/cli @capacitor/android`
-2. `npx cap add android`
-3. `npx cap sync android`
-4. `npx cap open android`
-5. Compiler l'APK depuis Android Studio.
-
-La compilation Android native ne se fait pas directement dans ce dossier depuis une simple tablette Android sans environnement de développement adapté.
-
-## Prochaines étapes indispensables
-1. Choisir un backend et une base de données avec un niveau gratuit adapté.
-2. Mettre en place l'inscription, la connexion, la réinitialisation de mot de passe et les droits serveur.
-3. Connecter un fournisseur IA réel et appliquer les quotas côté serveur.
-4. Ajouter Stripe ou un prestataire compatible, avec webhooks signés et vérification serveur.
-5. Ajouter les pages légales et tester sécurité, RGPD et parcours de paiement.
-6. Déployer sous HTTPS, configurer les secrets dans l'hébergeur et tester en production.
-
-## Coûts
-Le code de ce prototype peut être utilisé gratuitement. L'hébergement, les services de modèles IA, les commissions de paiement et la publication mobile peuvent avoir des limites ou des frais. Une offre gratuite n'est pas une garantie de coût nul à long terme.
+## Limites à connaître
+- Vercel Hobby (gratuit) est réservé à un usage personnel non commercial ; un site qui encaisse relève en principe du plan Pro (payant).
+- Quotas gratuits Upstash et du fournisseur IA limités ; ajustez les limites dans l'admin.
